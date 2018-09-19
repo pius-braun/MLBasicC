@@ -16,11 +16,11 @@ As an example, the network trains the MNIST Dataset and achieves a hit rate of 9
 
 ## Documentation
 
-| Section                                 | Content                                                      |
-| :-------------------------------------- | ------------------------------------------------------------ |
-| [Specification](docs/Specification.pdf) | describes the Math behind Neural Networks                    |
-| [Implementation](Implementation.pdf)    | explains the Code                                            |
-| [References](docs/References.pdf)       | contains the list of books, websites, tools and third party libraries |
+| Section                                   | Content                                                      |
+| :---------------------------------------- | ------------------------------------------------------------ |
+| [Specification](docs/Specification.pdf)   | describes the Math behind Neural Networks                    |
+| [Implementation](docs/Implementation.pdf) | explains the Code                                            |
+| [References](docs/References.pdf)         | contains the list of books, websites, tools and third party libraries |
 
 -----
 
