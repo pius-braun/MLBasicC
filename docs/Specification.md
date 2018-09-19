@@ -14,7 +14,7 @@ Copyright (c) Pius Braun 2018
 
 This picture shows the draft of a fully connected neural network an the additional cost function and target values that are needed for the so called "supervised learning". 
 
-![](C:\Users\piusb\Documents\MachineLearning\MLBasicsC\docs\pic\network_full2.png) 
+![](pic/network_full2.png) 
 
 
 
@@ -25,7 +25,7 @@ The following picture is a detail of the above network, showing weights and bias
 
 
 
-![](C:\Users\piusb\Documents\MachineLearning\MLBasicsC\docs\pic\network_detail.png) 
+![](pic/network_detail.png) 
 
 
 
