@@ -49,6 +49,7 @@ typedef struct RawData {
 } RawData;
 
 
+// this is for test
 void Snapshot(FILE* f, MatrixXd m) {
 	int fi, fj;
 	for (fi = 0; fi < m.rows(); fi++) {
@@ -129,11 +130,6 @@ class NeuronSigmoid : public NeuronBase {
 			}
 
 			MatrixXd fn(MatrixXd z) {
-//				MatrixXd m3 = (1.0 / (1.0 + exp(-z.array())));
-//				printf("------------------------\n");
-//				Snapshot(stdout, z);
-//				Snapshot(stdout, m3);
-				
 				return (1.0 / (1.0 + exp(-z.array())));
 			}
 
@@ -162,20 +158,12 @@ class NeuronSoftmax : public NeuronBase {
 					MatrixXd m1 = exp(z.array());
 					d = m1.sum();
 					m1 = m1 / d;
-
-//					printf("----- Softmax fn single ------------d= %.3lf-------\n", d);
-//					Snapshot(stdout, z);
-//					Snapshot(stdout, m1);
-
 					return m1;
 				}
 				z = z.colwise() - z.rowwise().maxCoeff();
 				MatrixXd m1 = exp(z.array());
 				MatrixXd m2 = m1.rowwise().sum();
 				MatrixXd m3 = (m1.cwiseQuotient(m2.replicate(1, z.cols())));
-//				printf("----- Softmax fn -------------------\n");
-//				Snapshot(stdout, z);
-//				Snapshot(stdout, m3);
 				return m3;
 			}
 
@@ -409,14 +397,6 @@ class NetworkBase {
 
 				// Res(l)[batchsize*nSize] = neuron_fn(Z(l)[batchsize*nSize])
 				pRun->mRes = pRun->neuron->fn(pRun->mZ);
-				
-//				if (pRun->pNext == NULL) {
-//					printf("--- feedforward_n ---- \n");
-//					Snapshot(stdout, pRun->mZ);
-//					Snapshot(stdout, pRun->mRes);					
-//				}
-				
-				
 				pRun = pRun->pNext;
 			}
 		}
@@ -436,13 +416,6 @@ class NetworkBase {
 				pRun->vResTest = pRun->neuron->fn(pRun->vZTest);
 
 				vResPrev = pRun->vResTest;
-
-//				if (pRun->pNext == NULL) {
-//					printf("--- feedforward_t ---- \n");
-//					Snapshot(stdout, pRun->vZTest);
-//					Snapshot(stdout, pRun->vResTest);					
-//				}
-				
 				pRun = pRun->pNext;
 			}
 			return vResPrev;
@@ -464,11 +437,6 @@ class NetworkBase {
 			pRun = pNet->pNext;
 			while (pRun->pNext != NULL)
 				pRun = pRun->pNext;
-
-
-//			Snapshot(stdout, pRun->mRes);
-//			Snapshot(stdout, mLabels);
-//			printf("---\n");
 			
 			// Delta(lOut)[batchsize*nSize] = cost_derivative(Z(lOut)[batchsize*nSize], Res(lOut)[batchsize*nSize], labels(lOut)[batchsize*nSize])
 			pRun->mDelta = cost_derivative(pRun->mZ, pRun->mRes, mLabels);
@@ -575,9 +543,6 @@ class NetworkQ : public NetworkBase {
 		// IN: 2 times batchsize * nSizeOut
 		// OUT: double
 		double cost_function(MatrixXd mOut, MatrixXd mY) {
-
-			printf("-------- cost_function Q ------\n");			
-
 			double n = (double)mOut.rows();
 			if (mOut.cols() == 1)
 				n = 1.0;
@@ -624,11 +589,8 @@ class NetworkCEB : public NetworkBase {
 		// IN: 2 times batchsize * nSizeOut
 		// OUT: double
 		double cost_function(MatrixXd mOut, MatrixXd mY) {
-			printf("-------- cost_function CEB ------\n");			
-			Snapshot(stdout, mOut);
-
-			double res = 0;
 			int i;
+			double res = 0.0;
 			for (i = 0; i < mOut.rows() * mOut.cols(); i++)
 				res = res + crossEntropy(mOut(i), mY(i));
 			if (mOut.cols() != 1)
@@ -659,10 +621,6 @@ class NetworkCEM : public NetworkBase {
 		double cost_function(MatrixXd mOut, MatrixXd mY) {
 			double res = 0.0;
 			int i;
-
-	//		printf("-------- cost_function CEM ------\n");			
-	//		Snapshot(stdout, mOut);
-			
 			for (i = 0; i < mOut.rows()*mOut.cols(); i++)
  				if (mY(i) != 0.0)
 					res = res + log(mOut(i));
@@ -679,7 +637,6 @@ class NetworkCEM : public NetworkBase {
 			for (i = 0; i < mZ.rows(); i++) {
 				for (j = 0; j < mZ.cols(); j++) {
 					if (mY(i,j) != 0.0) {
-//						printf("%d  ", j);
 						for (k = 0; k < mZ.cols(); k++) {
 							if (k == j)
 								mRes(i, k) = - mOut(i,k) * (1.0 - mOut(i,k));
@@ -689,10 +646,6 @@ class NetworkCEM : public NetworkBase {
 					}
 				}
 			}
-//			printf("\n --- cost derivative --- \n");
-//			Snapshot(stdout, mY);
-//			Snapshot(stdout, mRes);
-//			printf("\n");
 			return (mRes);
 		}		
 };
