@@ -18,7 +18,7 @@ As an example, the network trains the MNIST Dataset and achieves an accuracy of 
 
 | Section                                    | Content                                                      |
 | :----------------------------------------- | ------------------------------------------------------------ |
-| [Specification](https://github.com/pius-braun/MLBasicC/blob/master/docs/Specification.html)   | describes the Math behind Neural Networks                    |
+| [Specification](https://github.com/pius-braun/MLBasicC/blob/master/docs/Specification.pdf)   | describes the Math behind Neural Networks                    |
 | [Implementation](docs/Implementation.html) | explains the Code                                            |
 | [References](docs/References.html)         | contains the list of books, websites, tools and third party libraries |
 
