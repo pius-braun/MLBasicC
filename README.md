@@ -6,7 +6,7 @@ Neural networks are one of the most important methods in machine learning.
 
 This project implements some of the widely used components of neural networks in `C++` using **Back Propagation** and **Stochastic Gradient Descent**. 
 
-The result is a very basic kernel for machine learning, that can train a neural network with different neurons and cost functions. The parameters of the network can be configured from the command line.
+The result is a very basic kernel for machine learning, that can train a neural network with different neurons and cost functions.
 
 The following cost functions are implemented:
 
