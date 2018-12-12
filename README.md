@@ -6,7 +6,17 @@ Neural networks are one of the most important methods in machine learning.
 
 This project implements some of the widely used components of neural networks in `C++` using **Back Propagation** and **Stochastic Gradient Descent**. 
 
-The result is an executable file that can train a neural network with different neurons (Linear, Sigmoid and Softmax) and cost functions (Quadratic, Binary Cross Entropy and Multiclass Cross Entropy). The parameters of the network can be configured from the command line.
+The result is a very basic kernel for machine learning, that can train a neural network with different neurons and cost functions. The parameters of the network can be configured from the command line.
+
+The following cost functions are implemented:
+
+![](CostFunctions.PNG)
+
+The following neuron functions are implemented:
+
+![](NeuronFunctions.PNG)
+
+All parameters of the network can be configured from the command line.
 
 As an example, the network trains the MNIST Dataset and achieves an accuracy of up to 98.5 %.
 
@@ -33,7 +43,7 @@ If you want to contribute to the project:
 1. Write a specification, what you intend to achive, and what's the Math behind it.
 2. Send the sepcification to me: pius.braun@t-online.de.
 3. Update the source code in a sandbox on your own system and test it for bugs.
-4. run the tests similar to my Test section in the documentation.
+4. Run the tests similar to my Test section in the documentation.
 
 
 
